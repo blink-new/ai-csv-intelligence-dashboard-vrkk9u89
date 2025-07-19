@@ -31,6 +31,7 @@ import { DatabaseConnection } from './components/DatabaseConnection';
 import { SampleDataLoader } from './components/SampleDataLoader';
 import { EnhancedDatasetManager } from './components/EnhancedDatasetManager';
 import { MongoMCPInterface } from './components/MongoMCPInterface';
+import { MCPInterface } from './components/MCPInterface';
 import { QuickStatsPanel } from './components/QuickStatsPanel';
 import { CSVFile, DataInsight } from './types/csv';
 import { EnhancedAIService } from './services/enhancedAIService';
@@ -219,6 +220,10 @@ const AppContent: React.FC = () => {
                 <Server className="h-4 w-4" />
                 MongoDB
               </TabsTrigger>
+              <TabsTrigger value="mcp" className="flex items-center gap-2 whitespace-nowrap">
+                <MessageSquare className="h-4 w-4" />
+                MCP
+              </TabsTrigger>
               <TabsTrigger value="relationships" className="flex items-center gap-2 whitespace-nowrap">
                 <Link className="h-4 w-4" />
                 Relations
@@ -279,6 +284,13 @@ const AppContent: React.FC = () => {
             <MongoMCPInterface 
               onDataLoaded={handleDatabaseDataLoaded}
               onChartRequested={handleVisualizationRequested}
+            />
+          </TabsContent>
+
+          {/* MCP Interface Tab */}
+          <TabsContent value="mcp">
+            <MCPInterface 
+              onDataVisualized={handleVisualizationRequested}
             />
           </TabsContent>
 
